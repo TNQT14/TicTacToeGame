@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/constants/asset_constants.dart';
+import 'package:tictactoe/widget/boderFun.dart';
 
 import '../../widget/button_widget.dart';
 import '../../widget/grid_widget.dart';
 class MobileScreen extends StatelessWidget {
   final List<int>? tiles;
   final double height;
-  final double wight;
-  final String mgs;
+  final double width;
+  final String msg;
   final bool isMe;
   const MobileScreen({
     super.key,
     this.tiles,
     required this.height,
-    required this.wight,
-    required this.mgs,
+    required this.width,
+    required this.msg,
     required this.isMe
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: wight,
+      width: width,
       height: height,
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -29,12 +30,12 @@ class MobileScreen extends StatelessWidget {
           fit: BoxFit.cover
         )
       ),
-      child: Row(
+      child: Column(
         children: [
-          Flexible(
-            child: gridWidget(),
-            flex: 2,
-          ),
+          // Flexible(
+          //   // child: gridWidget(),
+          //   flex: 2,
+          // ),
           Flexible(
             flex: 1,
             child: Column(
@@ -42,13 +43,13 @@ class MobileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 const Spacer(),
+                titleWidget(),
                 const Spacer(),
-                Text("Tic Tac Toe Game"),
+                msgWidget(msg),
                 const Spacer(),
-                Text(mgs),
+                GridViewWidget(tiles: tiles,),
                 const Spacer(),
                 buttonWidget(context),
-                const Spacer(),
                 const Spacer(),
               ],
             ),

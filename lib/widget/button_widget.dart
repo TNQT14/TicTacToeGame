@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tictactoe/bloc/game_bloc.dart';
 
 OutlinedButton buttonWidget(BuildContext context){
-  return OutlinedButton.icon(onPressed: (){},
+  return OutlinedButton.icon(onPressed: (){
+    context.read<GameBloc>().add(ClearGame());
+  },
       icon: const Icon(Icons.replay),
       label: Text("Reset",
         style: TextStyle(
